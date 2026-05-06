@@ -4,37 +4,6 @@
     <view class="welcome__overlay" />
 
     <view class="welcome__safe">
-      <view class="welcome__hero">
-        <view class="welcome__badge">
-          <text>恋爱人格 · 自测</text>
-        </view>
-        <view class="welcome__title">
-          <text class="welcome__title-line">奶茶喝一口</text>
-          <text class="welcome__title-line welcome__title-line--accent">
-            你属于哪种恋爱人格？
-          </text>
-        </view>
-        <view class="welcome__sub">
-          <text>
-            13 道题 · 1 分钟测出你的「恋爱角色卡」
-          </text>
-        </view>
-      </view>
-
-      <view class="welcome__avatars">
-        <view
-          v-for="(p, i) in previewPersonalities"
-          :key="p.key"
-          class="welcome__avatar"
-          :style="{
-            animationDelay: 200 + i * 80 + 'ms',
-            background: p.color,
-          }"
-        >
-          <text class="welcome__avatar-text">{{ p.name.slice(0, 1) }}</text>
-        </view>
-      </view>
-
       <view class="welcome__actions">
         <view class="welcome__btn" @click="onStart">
           <text class="welcome__btn-text">开始测试</text>
@@ -49,21 +18,21 @@
 </template>
 
 <script setup lang="ts">
-import { onLoad } from '@dcloudio/uni-app'
-import { resetQuiz } from '@/utils/store'
-import { personalities } from '@/data/personalities'
-import bgImage from '@/static/bg.jpg'
+import { onLoad } from "@dcloudio/uni-app";
+import { resetQuiz } from "@/utils/store";
+import { personalities } from "@/data/personalities";
+import bgImage from "@/static/index-bg.jpg";
 
-const previewPersonalities = personalities
+const previewPersonalities = personalities;
 
 onLoad(() => {
   // 进入首页时重置上次答题状态
-  resetQuiz()
-})
+  resetQuiz();
+});
 
 function onStart() {
-  resetQuiz()
-  uni.navigateTo({ url: '/pages/quiz/quiz' })
+  resetQuiz();
+  uni.navigateTo({ url: "/pages/quiz/quiz" });
 }
 </script>
 
@@ -81,19 +50,12 @@ function onStart() {
     width: 100%;
     height: 100%;
     z-index: 0;
-    animation: bg-breath 12s ease-in-out infinite alternate;
   }
 
   &__overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 244, 230, 0.5) 0%,
-      rgba(255, 244, 230, 0.78) 60%,
-      rgba(255, 244, 230, 0.95) 100%
-    );
   }
 
   &__safe {
@@ -104,7 +66,7 @@ function onStart() {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   &__hero {
@@ -205,7 +167,8 @@ function onStart() {
     align-items: center;
     justify-content: center;
     box-shadow: 0 16rpx 36rpx rgba(255, 81, 112, 0.35);
-    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 220ms ease;
     position: relative;
     overflow: hidden;
@@ -216,7 +179,7 @@ function onStart() {
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(
