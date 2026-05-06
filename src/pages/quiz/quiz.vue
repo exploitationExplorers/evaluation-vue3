@@ -1,6 +1,6 @@
 <template>
   <view class="quiz">
-    <image class="quiz__bg" src="/static/bg.jpg" mode="aspectFill" />
+    <image class="quiz__bg" :src="bgImage" mode="aspectFill" />
     <view class="quiz__overlay" />
 
     <view class="quiz__safe">
@@ -73,6 +73,7 @@ import { computed, ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import ProgressBar from '@/components/ProgressBar.vue'
 import OptionItem from '@/components/OptionItem.vue'
+import bgImage from '@/static/bg.jpg'
 import { questions, TOTAL_QUESTIONS } from '@/data/questions'
 import {
   finishQuiz,

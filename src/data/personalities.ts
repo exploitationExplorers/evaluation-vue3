@@ -8,7 +8,19 @@
  * 26~30 直球选手
  * 31~35 晚期恋爱脑
  * 36~39 纯爱战神
+ *
+ * 注：图片用 import 方式引入，避免部署到子路径或哈希路由时
+ *     绝对路径 /static/xxx.jpg 解析不到（Vercel 等场景）
  */
+
+import imgEatMelon from '@/static/resultImg/Eat-melon.jpg'
+import imgLonelyWidowed from '@/static/resultImg/lonely-widowed.jpg'
+import imgKiller from '@/static/resultImg/Killer.jpg'
+import imgOverbearingCEO from '@/static/resultImg/Overbearing-CEO.jpg'
+import imgAquaman from '@/static/resultImg/Aquaman.jpg'
+import imgFastball from '@/static/resultImg/Fastball.jpg'
+import imgCrashScholar from '@/static/resultImg/Crash-scholar.jpg'
+import imgListenAdvice from '@/static/resultImg/Listen-advice.jpg'
 
 export interface Personality {
   /** 唯一标识 */
@@ -21,7 +33,7 @@ export interface Personality {
   min: number
   /** 分数上限（含） */
   max: number
-  /** 长图地址（绝对路径，编译后落到 /static/...） */
+  /** 长图地址（由 Vite 处理后输出带 hash 的相对路径） */
   image: string
   /** 主题色（用于结果页装饰元素） */
   color: string
@@ -34,7 +46,7 @@ export const personalities: Personality[] = [
     tagline: '看戏第一名，参与最末名',
     min: 0,
     max: 5,
-    image: '/static/resultImg/Eat-melon.jpg',
+    image: imgEatMelon,
     color: '#7BC47F',
   },
   {
@@ -43,7 +55,7 @@ export const personalities: Personality[] = [
     tagline: '一个人也能把日子过成诗',
     min: 6,
     max: 10,
-    image: '/static/resultImg/lonely-widowed.jpg',
+    image: imgLonelyWidowed,
     color: '#9B8CFF',
   },
   {
@@ -52,7 +64,7 @@ export const personalities: Personality[] = [
     tagline: '人畜无害的微笑底下，全是套路',
     min: 11,
     max: 15,
-    image: '/static/resultImg/Killer.jpg',
+    image: imgKiller,
     color: '#5FD3B6',
   },
   {
@@ -61,7 +73,7 @@ export const personalities: Personality[] = [
     tagline: '面冷心热，傲娇但护短',
     min: 16,
     max: 20,
-    image: '/static/resultImg/Overbearing-CEO.jpg',
+    image: imgOverbearingCEO,
     color: '#3C5A7C',
   },
   {
@@ -70,7 +82,7 @@ export const personalities: Personality[] = [
     tagline: '鱼塘已清空，但偶尔还会回去看看',
     min: 21,
     max: 25,
-    image: '/static/resultImg/Aquaman.jpg',
+    image: imgAquaman,
     color: '#39A0C5',
   },
   {
@@ -79,7 +91,7 @@ export const personalities: Personality[] = [
     tagline: '喜欢就直接说，绕弯路浪费感情',
     min: 26,
     max: 30,
-    image: '/static/resultImg/Fastball.jpg',
+    image: imgFastball,
     color: '#FF8A65',
   },
   {
@@ -88,7 +100,7 @@ export const personalities: Personality[] = [
     tagline: '为爱发电，永不断电',
     min: 31,
     max: 35,
-    image: '/static/resultImg/Crash-scholar.jpg',
+    image: imgCrashScholar,
     color: '#F06292',
   },
   {
@@ -97,7 +109,7 @@ export const personalities: Personality[] = [
     tagline: '世界破破烂烂，纯爱缝缝补补',
     min: 36,
     max: 39,
-    image: '/static/resultImg/Listen-advice.jpg',
+    image: imgListenAdvice,
     color: '#E91E63',
   },
 ]

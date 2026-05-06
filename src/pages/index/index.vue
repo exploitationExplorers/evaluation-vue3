@@ -1,6 +1,6 @@
 <template>
   <view class="welcome">
-    <image class="welcome__bg" src="/static/bg.jpg" mode="aspectFill" />
+    <image class="welcome__bg" :src="bgImage" mode="aspectFill" />
     <view class="welcome__overlay" />
 
     <view class="welcome__safe">
@@ -52,6 +52,7 @@
 import { onLoad } from '@dcloudio/uni-app'
 import { resetQuiz } from '@/utils/store'
 import { personalities } from '@/data/personalities'
+import bgImage from '@/static/bg.jpg'
 
 const previewPersonalities = personalities
 

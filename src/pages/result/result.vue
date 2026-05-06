@@ -1,6 +1,6 @@
 <template>
   <view class="result" :style="{ '--accent': personality.color }">
-    <image class="result__bg" src="/static/bg.jpg" mode="aspectFill" />
+    <image class="result__bg" :src="bgImage" mode="aspectFill" />
     <view class="result__overlay" />
 
     <scroll-view scroll-y class="result__scroll">
@@ -51,6 +51,7 @@
 import { computed, onUnmounted, ref } from 'vue'
 import { onLoad, onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'
 import ResultPoster from '@/components/ResultPoster.vue'
+import bgImage from '@/static/bg.jpg'
 import { quizStore, resetQuiz } from '@/utils/store'
 import { matchPersonality } from '@/utils/score'
 import { saveImageToAlbum, shareResult } from '@/utils/share'
