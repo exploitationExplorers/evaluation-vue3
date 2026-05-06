@@ -1,0 +1,38 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "恋爱人格测评",
+				"navigationStyle": "custom",
+				"backgroundColor": "#fff3e8"
+			}
+		},
+		{
+			"path": "pages/quiz/quiz",
+			"style": {
+				"navigationBarTitleText": "答题中",
+				"navigationStyle": "custom",
+				"backgroundColor": "#fff3e8"
+			}
+		},
+		{
+			"path": "pages/result/result",
+			"style": {
+				"navigationBarTitleText": "测评结果",
+				"navigationStyle": "custom",
+				"backgroundColor": "#fff3e8",
+				"enableShareAppMessage": true,
+				"enableShareTimeline": true
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "恋爱人格测评",
+		"navigationBarBackgroundColor": "#fff3e8",
+		"backgroundColor": "#fff3e8",
+		"animationType": "slide-in-right",
+		"animationDuration": 320
+	}
+}
