@@ -24,7 +24,7 @@ const personality = computed(() => matchPersonality(score.value));
 
 const MINI_PROGRAM_APP_ID = "";
 const MINI_PROGRAM_PATH = "";
-const MINI_PROGRAM_H5_URL = "https://wxaurl.cn/EleygICyFQm";
+const MINI_PROGRAM_H5_URL = "https://wxaurl.cn/QXsP98mePAh";
 const POSTER_BOTTOM_CLICK_RATIO = 0.22;
 const scrollTop = ref(0);
 const posterHeight = ref(0);
