@@ -61,7 +61,7 @@ function onStart() {
   &__safe {
     position: relative;
     z-index: 2;
-    padding: 160rpx 56rpx 80rpx;
+    padding: 160rpx 56rpx 3vh;
     min-height: 100vh;
     box-sizing: border-box;
     display: flex;

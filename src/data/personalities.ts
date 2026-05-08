@@ -13,7 +13,7 @@
  *     绝对路径 /static/xxx.jpg 解析不到（Vercel 等场景）
  */
 
-import imgEatMelon from "@/static/resultImg/Eat-melon.jpg";
+import imgEatMelon from "@/static/resultImg/Eat-melon.png";
 import imgLonelyWidowed from "@/static/resultImg/lonely-widowed.jpg";
 import imgKiller from "@/static/resultImg/Killer.jpg";
 import imgOverbearingCEO from "@/static/resultImg/Overbearing-CEO.jpg";
