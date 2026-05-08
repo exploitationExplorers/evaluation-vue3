@@ -1,33 +1,22 @@
 <template>
   <view class="result">
-    <scroll-view
-      scroll-y
-      class="result__scroll"
-      @scroll="cancelPosterLongPress"
-    >
-      <view class="result__content">
-        <image class="result__bg" :src="bgImage" mode="aspectFill" />
-        <view class="result__overlay" />
-
-        <view class="result__poster-wrap">
-          <image
-            class="result__poster"
-            :src="personality.image"
-            mode="widthFix"
-            :show-menu-by-longpress="true"
-            @touchstart="startPosterLongPress"
-            @touchmove="handlePosterTouchMove"
-            @touchend="cancelPosterLongPress"
-            @touchcancel="cancelPosterLongPress"
-          />
-          <view
-            class="result__jump-hotspot"
-            :style="jumpHotspotStyle"
-            @click.stop="jumpToMiniProgram"
-          />
-        </view>
-      </view>
-    </scroll-view>
+    <view class="result__poster-wrap">
+      <image
+        class="result__poster"
+        :src="personality.image"
+        mode="aspectFill"
+        :show-menu-by-longpress="true"
+        @touchstart="startPosterLongPress"
+        @touchmove="handlePosterTouchMove"
+        @touchend="cancelPosterLongPress"
+        @touchcancel="cancelPosterLongPress"
+      />
+      <view
+        class="result__jump-hotspot"
+        :style="jumpHotspotStyle"
+        @click.stop="jumpToMiniProgram"
+      />
+    </view>
   </view>
 </template>
 
@@ -36,7 +25,6 @@ import { computed, onBeforeUnmount } from "vue";
 import { onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import { quizStore } from "@/utils/store";
 import { matchPersonality } from "@/utils/score";
-import bgImage from "@/static/bg.jpg";
 
 const score = computed(() => quizStore.finalScore);
 const personality = computed(() => matchPersonality(score.value));
@@ -265,54 +253,21 @@ onShareTimeline(() => {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: #fff;
-
-  &__scroll {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: transparent;
-  }
-
-  &__content {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-
-  &__bg {
-    display: block;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    z-index: 0;
-    object-fit: cover;
-    object-position: center;
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
+  background: #000;
 
   &__poster-wrap {
     position: relative;
-    z-index: 2;
     width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
 
   &__poster {
     display: block;
     width: 100vw;
-    max-width: none;
-    height: auto;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
     -webkit-touch-callout: default;
   }
 
