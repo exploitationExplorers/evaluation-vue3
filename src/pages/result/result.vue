@@ -253,7 +253,7 @@ onShareTimeline(() => {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: #000;
+  background: #fbd1de;
 
   &__poster-wrap {
     position: relative;
