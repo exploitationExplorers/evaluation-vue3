@@ -1,7 +1,7 @@
 <template>
   <view class="result">
     <view class="result__poster-wrap">
-      <!-- <image
+      <image
         class="result__poster"
         :src="personality.image"
         mode="aspectFill"
@@ -15,8 +15,8 @@
         class="result__jump-hotspot"
         :style="jumpHotspotStyle"
         @click.stop="jumpToMiniProgram"
-      /> -->
-      你好，这个部署服务器费用，你看能不能以直接走线下支付，走线下是开不了发票，但是我给你便宜100，只用300就行，因为那个中介抽50%，如果走平台我是拿不到多少钱的，你觉得怎么样，如果可以加我微信Ac92603不要在群里说哈。谢谢
+      />
+      <!-- 你好，这个部署服务器费用，你看能不能以直接走线下支付，走线下是开不了发票，但是我给你便宜100，只用300就行，因为那个中介抽50%，如果走平台我是拿不到多少钱的，你觉得怎么样，如果可以加我微信Ac92603不要在群里说哈。谢谢 -->
     </view>
   </view>
 </template>
