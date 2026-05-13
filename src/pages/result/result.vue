@@ -20,12 +20,14 @@
     </view>
   </view>
 </template>
-
 <script setup lang="ts">
 import { computed, onBeforeUnmount } from "vue";
 import { onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import { quizStore } from "@/utils/store";
 import { matchPersonality } from "@/utils/score";
+// #ifdef H5
+import "jweixin-module";
+// #endif
 
 const score = computed(() => quizStore.finalScore);
 const personality = computed(() => matchPersonality(score.value));
@@ -33,6 +35,8 @@ const personality = computed(() => matchPersonality(score.value));
 const MINI_PROGRAM_APP_ID = "";
 const MINI_PROGRAM_PATH = "";
 const MINI_PROGRAM_H5_URL = "https://wxaurl.cn/QXsP98mePAh";
+const MINI_PROGRAM_TARGET_PAGE =
+  "/pluginMarketing/lottery/index/index?activityId=1259090493611814912";
 
 // 右下角跳转热区尺寸，按设计图实际按钮区域调整即可。
 const JUMP_HOTSPOT_WIDTH = "220rpx";
@@ -51,12 +55,56 @@ const POSTER_LONG_PRESS_MOVE_LIMIT = 8;
 
 function jumpToMiniProgram() {
   // #ifdef H5
-  if (!MINI_PROGRAM_H5_URL) {
-    uni.showToast({ title: "请配置小程序 URL Link", icon: "none" });
+  const wxSdk = (window as any).wx || (window as any).jWeixin;
+  if (!wxSdk?.miniProgram) {
+    if (MINI_PROGRAM_H5_URL) {
+      window.location.href = MINI_PROGRAM_H5_URL;
+      return;
+    }
+
+    uni.showToast({ title: "请在微信小程序内打开", icon: "none" });
     return;
   }
 
-  window.location.href = MINI_PROGRAM_H5_URL;
+  wxSdk.miniProgram.getEnv((res: { miniprogram: boolean }) => {
+    if (!res.miniprogram) {
+      if (MINI_PROGRAM_H5_URL) {
+        window.location.href = MINI_PROGRAM_H5_URL;
+        return;
+      }
+
+      uni.showToast({ title: "请在微信小程序内打开", icon: "none" });
+      return;
+    }
+
+    wxSdk.miniProgram.navigateTo({
+      url: MINI_PROGRAM_TARGET_PAGE,
+      fail: () => {
+        uni.showToast({
+          title: "跳转失败，请检查小程序页面路径",
+          icon: "none",
+        });
+      },
+    });
+  });
+  // window.location.href = MINI_PROGRAM_H5_URL;
+  // uni.navigateToMiniProgram({
+  //   appId: "wxdfb3495a3aa4207d",
+  //   path: "pages/index/index?id=123",
+  //   extraData: {
+  //     data1: "test",
+  //   },
+  //   success(res) {
+  //     // 打开成功
+  //   },
+  // });
+
+  // uni.redirectTo({
+  //   url: "pages/index/index",
+  // });
+  // uni.reLaunch({
+  //   url: "pages/index/index",
+  // });
   // #endif
 
   // #ifdef MP-WEIXIN
