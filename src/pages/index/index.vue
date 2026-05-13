@@ -42,7 +42,7 @@ function onStart() {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: #fff3e8;
+  background: #ff89a8;
 
   &__bg {
     position: absolute;
